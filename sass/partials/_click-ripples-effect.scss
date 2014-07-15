@@ -1,0 +1,53 @@
+.click-ripples-effect {
+  position: relative;
+  overflow: hidden;
+
+  .ripples-circle {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    -webkit-backface-visibility: hidden;
+    @include user-select(none);
+  }
+
+  &.is-active .ripples-circle {
+    -webkit-animation: ripples .4s ease-in;
+    animation: ripples .4s ease-in;
+  }
+}
+
+/* Ripples animation */
+@keyframes ripples {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    width: 280%;
+    padding-bottom: 280%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes ripples {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    width: 280%;
+    padding-bottom: 280%;
+    opacity: 0;
+  }
+}

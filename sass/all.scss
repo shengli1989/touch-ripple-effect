@@ -10,6 +10,8 @@ $grid-background-baseline-height: $base-line-height;
 
 // import all things
 @import "compass";
+@import "compass/css3/user-interface";
+
 @import "susy";
 
 @import "normalize";
@@ -20,8 +22,32 @@ $grid-background-baseline-height: $base-line-height;
 @import "layout";
 
 
+@import "partials/click-ripples-effect";
 
+.boxes {
+  margin: rhythm(2) 0;
+}
 
+.box {
+  display: block;
+  @include trailer(1);
+  background-color: black;
+  .box-media {
+    width: 100%;
+    padding-top: 100%;
+  }
+  @include at-breakpoint($pad) {
+    @include isolate-grid(4);
+  }
+  @include at-breakpoint($desktop) {
+    @include isolate-grid(4);
+  }
 
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      background-color: lighten(black, ($i * 10%));
+    }
+  }
+}
 
 
